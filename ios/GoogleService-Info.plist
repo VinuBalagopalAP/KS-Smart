@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>632753299966-qg710gk9dmj8ch05hi44alo49gikbgdm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.632753299966-qg710gk9dmj8ch05hi44alo49gikbgdm</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>632753299966-qlnpgtcnfilh73aqek6lmahqb7mvd759.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgwz6q5rYk4bfAVmiTZ5v6wkr6F3q1AAU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>632753299966</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.ksSmart</string>
+	<key>PROJECT_ID</key>
+	<string>ks-smart-machine-test</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ks-smart-machine-test.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:632753299966:ios:94dca5e5e2d8ceba0ea0af</string>
+		<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>***Your bundle ID***</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.107731993306-6s44u18onibp6gi0ddj94si1aifshhg6</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>***Something here***</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

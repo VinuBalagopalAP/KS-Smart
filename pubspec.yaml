@@ -1,0 +1,30 @@
+name: ks_smart
+description: Machine test for KS Smart Technologies.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.0-49.0.dev <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  firebase_core: ^1.20.1
+  firebase_auth: ^3.6.3
+  provider: ^6.0.3
+  google_sign_in: ^5.4.1
+  google_fonts: ^3.0.1
+  intl: ^0.17.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
