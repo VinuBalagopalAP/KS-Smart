@@ -1,6 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ks_smart/screens/auth/auth_page.dart';
-import 'package:ks_smart/screens/auth/pages/widgets/google_button.dart';
 
 import '../../../utils/theme.dart';
 import 'widgets/custom_text_field.dart';
@@ -41,110 +41,139 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.001),
-                IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      color: KsSmartTheme.black,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    }),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Text('Login to your\nAccount',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4!
-                            .copyWith(color: KsSmartTheme.black))),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Text('Please enter your\nemail and password',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2!
-                            .copyWith(color: KsSmartTheme.black))),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-
-                /// [ email ] field.
-                CustomTextField(
-                  controller: emailController,
-                  hintText: 'Email',
-                  icon: Icons.email,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: validateEmail,
-                ),
-                CustomTextField(
-                  controller: passwordController,
-                  hintText: 'Password',
-                  icon: Icons.vpn_key,
-                  obscureText: !_passwordVisible,
-                  validator: validatePassword,
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        /// Update the state i.e. [ toogle the state of passwordVisible ] variable
-                        setState(() {
-                          _passwordVisible = !_passwordVisible;
-                        });
-                      },
-                      icon: Icon(
-                        /// Based on [ passwordVisible ] state choose the icon
-                        _passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.001),
+                  IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new_sharp,
                         color: KsSmartTheme.black,
-                      )),
-                ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text('Login to your\nAccount',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4!
+                              .copyWith(color: KsSmartTheme.black))),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text('Please enter your\nemail and password',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(color: KsSmartTheme.black))),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
-                Center(
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text('Forgot the password?',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2!
-                            .copyWith(color: KsSmartTheme.black)),
+                  /// [ email ] field.
+                  CustomTextField(
+                    controller: emailController,
+                    hintText: 'Email',
+                    icon: Icons.email,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: validateEmail,
                   ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                Center(
-                  child: Text('or sign in with',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(color: KsSmartTheme.black)),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                const Center(child: GoogleButton()),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                Center(
-                    child: AuthButtons(
-                        title: 'Login',
-                        titleColor: KsSmartTheme.primaryColor,
+                  CustomTextField(
+                    controller: passwordController,
+                    hintText: 'Password',
+                    icon: Icons.vpn_key,
+                    obscureText: !_passwordVisible,
+                    validator: validatePassword,
+                    suffixIcon: IconButton(
                         onPressed: () {
-                          debugPrint('Logged in');
-                          Navigator.pushNamed(context, '/home');
+                          /// Update the state i.e. [ toogle the state of passwordVisible ] variable
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
                         },
-                        backgroundColor: KsSmartTheme.black)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-              ],
+                        icon: Icon(
+                          /// Based on [ passwordVisible ] state choose the icon
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: KsSmartTheme.black,
+                        )),
+                  ),
+
+                  Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text('Forgot the password?',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(color: KsSmartTheme.black)),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                  // Center(
+                  //   child: Text('or sign in with',
+                  //       textAlign: TextAlign.center,
+                  //       style: Theme.of(context)
+                  //           .textTheme
+                  //           .subtitle1!
+                  //           .copyWith(color: KsSmartTheme.black)),
+                  // ),
+                  // SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                  // const Center(child: GoogleButton()),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.25),
+                  Center(
+                      child: AuthButtons(
+                          title: 'Login',
+                          titleColor: KsSmartTheme.primaryColor,
+                          onPressed: () {
+                            /// [ Validate the form and if valid then login the user. ]
+                            // signIn();
+
+                            debugPrint('Logged in');
+                            Navigator.pushNamed(context, '/home');
+                          },
+                          backgroundColor: KsSmartTheme.black)),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future signIn() async {
+    /// [ Form Validation ] is for checking the Email & Password is valid or not.
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()));
+
+    /// [ Firebase Auth ] is for login the user.
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.code);
+    }
   }
 
   String? validateEmail(value) {

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>632753299966-qg710gk9dmj8ch05hi44alo49gikbgdm.apps.googleusercontent.com</string>
+	<string>680990892649-rc4b7j24bal52lvqlo1g4oejaentf3q2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.632753299966-qg710gk9dmj8ch05hi44alo49gikbgdm</string>
+	<string>com.googleusercontent.apps.680990892649-rc4b7j24bal52lvqlo1g4oejaentf3q2</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDgwz6q5rYk4bfAVmiTZ5v6wkr6F3q1AAU</string>
+	<string>AIzaSyCChEX2g7y8JrVWxLCBNbPyXzZWStlB_w8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>632753299966</string>
+	<string>680990892649</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.ksSmart</string>
 	<key>PROJECT_ID</key>
-	<string>ks-smart-machine-test</string>
+	<string>ks-smart-test-fluttervinu</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ks-smart-machine-test.appspot.com</string>
+	<string>ks-smart-test-fluttervinu.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,33 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:632753299966:ios:94dca5e5e2d8ceba0ea0af</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>***Your bundle ID***</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.107731993306-6s44u18onibp6gi0ddj94si1aifshhg6</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>***Something here***</string>
-			</array>
-		</dict>
-	</array>
+	<string>1:680990892649:ios:4995dc687919e23c8438f8</string>
 </dict>
 </plist>

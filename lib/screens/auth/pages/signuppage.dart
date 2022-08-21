@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../auth_page.dart';
@@ -47,121 +48,149 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: _formKey,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        body: Form(
+          key: _formKey,
 
-        /// [  AutovalidateMode.onUserInteraction ] is used to validate the form
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.001),
-                IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      color: KsSmartTheme.black,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    }),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Text('Create your\nAccount',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4!
-                            .copyWith(color: KsSmartTheme.black))),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Text('Create an account to\nstart using our app',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle2!
-                            .copyWith(color: KsSmartTheme.black))),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-
-                /// [ name ] field.
-                CustomTextField(
-                  controller: nameController,
-                  hintText: 'Full Name',
-                  icon: Icons.person,
-                  keyboardType: TextInputType.name,
-                  validator: validateName,
-                ),
-
-                /// [ email ] field.
-                CustomTextField(
-                  controller: emailController,
-                  hintText: 'Email',
-                  icon: Icons.mail,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: _validateEmail,
-                ),
-
-                /// [ phone ] field.
-                CustomTextField(
-                  controller: phoneController,
-                  hintText: 'Phone number',
-                  icon: Icons.phone,
-                  keyboardType: TextInputType.phone,
-                ),
-
-                /// [ password ] field.
-                CustomTextField(
-                  controller: passwordController,
-                  hintText: 'Confirm Password',
-                  icon: Icons.vpn_key,
-                  obscureText: !_passwordVisible,
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        /// Update the state i.e. [ toogle the state of passwordVisible ] variable
-                        setState(() {
-                          _passwordVisible = !_passwordVisible;
-                        });
-                      },
-                      icon: Icon(
-                        /// Based on [ passwordVisible ] state choose the icon
-                        _passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+          /// [  AutovalidateMode.onUserInteraction ] is used to validate the form
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.001),
+                  IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new_sharp,
                         color: KsSmartTheme.black,
-                      )),
-                  validator: validatePassword,
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/login');
-                    debugPrint('Login');
-                  },
-                  child: Center(
-                    child: Text('Already have an account?',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1!
-                            .copyWith(color: KsSmartTheme.black)),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text('Create your\nAccount',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4!
+                              .copyWith(color: KsSmartTheme.black))),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text('Create an account to\nstart using our app',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(color: KsSmartTheme.black))),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+
+                  /// [ name ] field.
+                  CustomTextField(
+                    controller: nameController,
+                    hintText: 'Full Name',
+                    icon: Icons.person,
+                    keyboardType: TextInputType.name,
+                    validator: validateName,
                   ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                Center(
-                    child: AuthButtons(
-                        title: 'Sign Up',
-                        titleColor: KsSmartTheme.primaryColor,
+
+                  /// [ email ] field.
+                  CustomTextField(
+                    controller: emailController,
+                    hintText: 'Email',
+                    icon: Icons.mail,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: _validateEmail,
+                  ),
+
+                  /// [ phone ] field.
+                  CustomTextField(
+                    controller: phoneController,
+                    hintText: 'Phone number',
+                    icon: Icons.phone,
+                    keyboardType: TextInputType.phone,
+                  ),
+
+                  /// [ password ] field.
+                  CustomTextField(
+                    controller: passwordController,
+                    hintText: 'Confirm Password',
+                    icon: Icons.vpn_key,
+                    obscureText: !_passwordVisible,
+                    suffixIcon: IconButton(
                         onPressed: () {
-                          debugPrint('Created an account');
+                          /// Update the state i.e. [ toogle the state of passwordVisible ] variable
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
                         },
-                        backgroundColor: KsSmartTheme.black)),
-              ],
+                        icon: Icon(
+                          /// Based on [ passwordVisible ] state choose the icon
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: KsSmartTheme.black,
+                        )),
+                    validator: validatePassword,
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                      debugPrint('Login');
+                    },
+                    child: Center(
+                      child: Text('Already have an account?',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(color: KsSmartTheme.black)),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                  Center(
+                      child: AuthButtons(
+                          title: 'Sign Up',
+                          titleColor: KsSmartTheme.primaryColor,
+                          onPressed: () {
+                            debugPrint('Created an account');
+                            signUp();
+                          },
+                          backgroundColor: KsSmartTheme.black)),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future signUp() async {
+    /// [ Form Validation ] is for checking the Email & Password is valid or not.
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+
+    /// [ Rest Part ] this will only work is the form is valid.
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()));
+
+    /// [ Firebase Auth ] is for signing up the user.
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.code);
+    }
   }
 
   String? validateName(value) {
